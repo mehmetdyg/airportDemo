@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:airport_app/providers/airportIcaoProvider.dart';
 import 'package:airport_app/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'screens/airportSearchScreen.dart';
 import './providers/airportprovider.dart';
 
 void main() {
@@ -37,25 +37,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const String userName = "admin";
-  static const String password = "psw";
-  final unController = TextEditingController();
-  final pswController = TextEditingController();
-
-  void _checkCredentials(String uName, String psw) {
-    if (uName == userName && psw == password) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const AirPortPage()),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return ChangeNotifierProvider(
-      create: (ctx) => AirportProvider(),
+    return MultiProvider(
+      providers: [
+        Provider<AirportProvider>(create: (_) => AirportProvider()),
+        Provider<AirportIcaoProvider>(create: (_) => AirportIcaoProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Airport Demo',

@@ -12,8 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  static const String userName = "admin";
-  static const String password = "psw";
+  static const String userName = "test@netcad.com";
+  static const String password = "Ntest!*";
   final unController = TextEditingController();
   final pswController = TextEditingController();
 
